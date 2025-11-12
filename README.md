@@ -34,10 +34,15 @@ Oferecer uma interface moderna e intuitiva.
 🧩 Principais Funcionalidades
 Funcionalidade	Descrição
 👤 Cadastro/Login	Sistema de autenticação seguro com validação de credenciais.
+
 💸 Controle de Transações	Registro de receitas e despesas com descrição, valor e data.
+
 🗂️ Categorias Personalizadas	Criação de categorias para melhor organização das finanças.
+
 📅 Filtros Dinâmicos	Consulta de dados por período, tipo e categoria.
+
 📊 Dashboard Interativo	Exibição de gráficos via Chart.js, com visão clara do desempenho mensal.
+
 📄 Relatórios Financeiros	Geração de relatórios em tela e opção de exportação em PDF.
 
 Relacionamentos:
@@ -64,17 +69,26 @@ Corpo: Roboto Regular — limpa e agradável para leitura de dados e relatórios
 
 ⚙️ Tecnologias Utilizadas
 Camada	Tecnologias
+
 Frontend	HTML5, CSS3, JavaScript, Chart.js
+
 Backend	C# (.NET 8)
+
 Banco de Dados	SQL Server
+
 Controle de Versão	Git & GitHub
+
 Design / Planejamento Coolors.co, Canva
 
 👥 Equipe de Desenvolvimento
 Integrante	Função	Responsabilidades
+
 Daniel Nascimento	QA / Dev Backend	Garantia da qualidade, desenvolvimento do backend e integração com o banco.
+
 Gabriel Milone	Dev Backend / DBA	Estruturação do banco de dados e manutenção das regras de negócio.
+
 Maryana Oliveira	Dev Frontend / Analista de Requisitos	Criação da interface, prototipagem e documentação funcional.
+
 Raphaga Willian	Testes e Implementação	Testes de usabilidade, correção de bugs e apoio técnico.
 
 🚀 Futuras Implementações
@@ -94,8 +108,11 @@ Raphaga Willian	Testes e Implementação	Testes de usabilidade, correção de bu
 Este projeto consolida o aprendizado prático das disciplinas de Programação, Banco de Dados, Análise de Sistemas e Testes, evidenciando a capacidade do grupo em trabalhar colaborativamente, integrar tecnologias e entregar um produto funcional.
 
 🔹 Código limpo e documentado.
+
 🔹 Interface planejada com foco na experiência do usuário (UX).
+
 🔹 Estrutura escalável e reutilizável.
+
 🔹 Apresentação voltada também para contextos empresariais, como o ambiente da Serasa Experian, valorizando boas práticas de desenvolvimento seguro e confiável.
 
 📦 Instalação e Execução
