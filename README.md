@@ -39,34 +39,6 @@ Funcionalidade	Descrição
 📅 Filtros Dinâmicos	Consulta de dados por período, tipo e categoria.
 📊 Dashboard Interativo	Exibição de gráficos via Chart.js, com visão clara do desempenho mensal.
 📄 Relatórios Financeiros	Geração de relatórios em tela e opção de exportação em PDF.
-🧱 Modelagem de Dados
-
-O sistema utiliza um banco de dados relacional, com estrutura otimizada para garantir consistência e escalabilidade.
-
-Usuarios(
-  IdUsuario INT PRIMARY KEY IDENTITY(1,1),
-  Nome VARCHAR(100) NOT NULL,
-  Email VARCHAR(100) UNIQUE,
-  SenhaHash VARCHAR(255)
-)
-
-Categorias(
-  IdCategoria INT PRIMARY KEY IDENTITY(1,1),
-  NomeCategoria VARCHAR(100),
-  TipoCategoria VARCHAR(50),
-  IdUsuario INT FOREIGN KEY REFERENCES Usuarios(IdUsuario)
-)
-
-Transacoes(
-  IdTransacao INT PRIMARY KEY IDENTITY(1,1),
-  Valor DECIMAL(10,2),
-  TipoTransacao VARCHAR(50),
-  Data DATE,
-  Descricao VARCHAR(255),
-  IdCategoria INT FOREIGN KEY REFERENCES Categorias(IdCategoria),
-  IdUsuario INT FOREIGN KEY REFERENCES Usuarios(IdUsuario)
-)
-
 
 Relacionamentos:
 
