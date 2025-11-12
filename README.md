@@ -110,13 +110,6 @@ dotnet run
 
 # (Frontend) Abrir o arquivo index.html no navegador
 
-🏁 Status do Projeto
-
-🟩 Em desenvolvimento (Etapa 1 — Planejamento e Modelagem concluída)
-🟩🟩 Etapa 2 — Implementação em andamento (backend + frontend)
-🟩🟩🟩 Etapa 3 - Testes e ajustes finos
-🟩🟩🟩🟩 Etapa 4 — Integração e testes finais previstos para entrega
-
 📅 Entrega
 
 🕒 Prazo da Etapa 1: 12/11/2025 — 21h59
