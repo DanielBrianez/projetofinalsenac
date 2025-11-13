@@ -53,6 +53,8 @@ Relacionamentos:
 
 1:N — Categorias → Transações
 
+Clique aqui para visualizar o DER: https://app.dynobird.com/?action=open&id=ae06a408-1a30-4d19-b08e-a380200c5c18
+
 🎨 Identidade Visual
 
 A identidade visual foi desenvolvida com foco em confiança, clareza e acessibilidade — elementos fundamentais para qualquer sistema financeiro.
