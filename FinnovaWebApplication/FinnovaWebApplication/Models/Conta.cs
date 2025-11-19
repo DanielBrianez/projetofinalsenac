@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using FinnovaWebApplication.Enums;
 using FinnovaWebApplication.Models;
 
 namespace Finnova.Core.Models
@@ -11,28 +10,39 @@ namespace Finnova.Core.Models
         [Key]
         public int IdConta { get; set; }
 
-        // FK obrigatória: 1 Usuario → N Contas
-        [Required]
-        [ForeignKey("Usuario")]
+        // =======================
+        //  FK → Usuário (Obrigatória)
+        // =======================
+        [Required(ErrorMessage = "O usuário é obrigatório.")]
+        [ForeignKey(nameof(Usuario))]
         public int IdUsuario { get; set; }
         public Usuario Usuario { get; set; } = null!;
 
-        // 🔥 FK para Banco (nova)
-        [Required]
-        [ForeignKey("Banco")]
+        // =======================
+        //  FK → Banco (Obrigatória)
+        // =======================
+        [Required(ErrorMessage = "O banco é obrigatório.")]
+        [ForeignKey(nameof(Banco))]
         public int IdBanco { get; set; }
         public Banco Banco { get; set; } = null!;
 
+        // =======================
+        //  FK → TipoConta (Obrigatória)
+        // =======================
+        [Required(ErrorMessage = "O tipo da conta é obrigatório.")]
+        [ForeignKey(nameof(TipoConta))]
+        public int IdTipoConta { get; set; }
+        public TipoConta TipoConta { get; set; } = null!;
+
+        // =======================
+        //  Campos principais
+        // =======================
         [Required(ErrorMessage = "O nome da conta é obrigatório.")]
+        [MaxLength(60, ErrorMessage = "O nome da conta deve ter no máximo 60 caracteres.")]
         [Display(Name = "Nome da Conta")]
-        [MaxLength(60)]
         public string NomeConta { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Campo obrigatório!")]
-        [Display(Name = "Tipo da Conta")]
-        public TipoConta Tipo { get; set; } = TipoConta.ContaCorrente;
-
-        [Required]
+        [Required(ErrorMessage = "O saldo inicial é obrigatório.")]
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Saldo Inicial")]
         public decimal SaldoInicial { get; set; }
@@ -41,6 +51,9 @@ namespace Finnova.Core.Models
         [Display(Name = "Saldo Atual")]
         public decimal SaldoAtual { get; set; }
 
+        // =======================
+        //  Datas
+        // =======================
         [Required]
         [Column(TypeName = "datetime2")]
         public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
@@ -50,15 +63,15 @@ namespace Finnova.Core.Models
 
         public bool Ativo { get; set; } = true;
 
-        // Navegação: 1 Conta → N Transações
+        // =======================
+        //  Navegações
+        // =======================
         public ICollection<Transacao> Transacoes { get; set; } = new List<Transacao>();
 
-        // Navegação: 1 Conta → N Transferências (origem)
-        [InverseProperty("ContaOrigem")]
+        [InverseProperty(nameof(Transferencia.ContaOrigem))]
         public ICollection<Transferencia> TransferenciasOrigem { get; set; } = new List<Transferencia>();
 
-        // Navegação: 1 Conta → N Transferências (destino)
-        [InverseProperty("ContaDestino")]
+        [InverseProperty(nameof(Transferencia.ContaDestino))]
         public ICollection<Transferencia> TransferenciasDestino { get; set; } = new List<Transferencia>();
     }
 }

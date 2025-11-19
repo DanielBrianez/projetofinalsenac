@@ -33,9 +33,8 @@
                 <span asp-validation-for="SenhaSalt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoUsuario" class="control-label"></label>
-                <select asp-for="TipoUsuario" class="form-control"></select>
-                <span asp-validation-for="TipoUsuario" class="text-danger"></span>
+                <label asp-for="IdTipoUsuario" class="control-label"></label>
+                <select asp-for="IdTipoUsuario" class ="form-control" asp-items="ViewBag.IdTipoUsuario"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Documento" class="control-label"></label>

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using FinnovaWebApplication.Enums;
 using FinnovaWebApplication.Models;
 
 namespace Finnova.Core.Models
@@ -11,19 +10,20 @@ namespace Finnova.Core.Models
         [Key]
         public int IdUsuario { get; set; }
 
-        [Required(ErrorMessage = "Campo obrigatório!")]
+        // Dados básicos
+        [Required(ErrorMessage = "O nome é obrigatório.")]
         [Display(Name = "Nome completo")]
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "O nome deve ter no máximo 100 caracteres.")]
         public string Nome { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Campo obrigatório!")]
+        [Required(ErrorMessage = "O e-mail é obrigatório.")]
         [Display(Name = "E-mail")]
         [MaxLength(100)]
-        [EmailAddress(ErrorMessage = "E-mail inválido!")]
+        [EmailAddress(ErrorMessage = "E-mail inválido.")]
         public string Email { get; set; } = string.Empty;
 
-        // Armazenar hash + salt
-        [Required(ErrorMessage = "Campo obrigatório!")]
+        // Segurança
+        [Required(ErrorMessage = "A senha é obrigatória.")]
         [Display(Name = "Senha")]
         [DataType(DataType.Password)]
         [MaxLength(512)]
@@ -33,10 +33,14 @@ namespace Finnova.Core.Models
         [MaxLength(512)]
         public string SenhaSalt { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Campo obrigatório!")]
-        [Display(Name = "Tipo de Usuário")]
-        public TipoUsuario TipoUsuario { get; set; } = TipoUsuario.Pessoal;
+        // Tipo de usuário (FK obrigatória)
+        [Required(ErrorMessage = "O tipo de usuário é obrigatório.")]
+        [ForeignKey("TipoUsuario")]
+        public int IdTipoUsuario { get; set; }
 
+        public virtual TipoUsuario TipoUsuario { get; set; } = null!;
+
+        // Dados adicionais
         [Display(Name = "Documento (CPF/CNPJ)")]
         [MaxLength(18)]
         public string? Documento { get; set; }
@@ -45,6 +49,7 @@ namespace Finnova.Core.Models
         [MaxLength(100)]
         public string? NomeEmpresa { get; set; }
 
+        // Auditoria
         [Required]
         [Column(TypeName = "datetime2")]
         public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
@@ -64,6 +69,5 @@ namespace Finnova.Core.Models
         public ICollection<Transferencia> Transferencias { get; set; } = new List<Transferencia>();
 
         public ICollection<LogAuditoria> LogsAuditoria { get; set; } = new List<LogAuditoria>();
-
     }
 }

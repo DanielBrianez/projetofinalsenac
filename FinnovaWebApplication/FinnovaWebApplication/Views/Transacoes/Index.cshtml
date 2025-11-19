@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.DataTransacao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tipo)
+                @Html.DisplayNameFor(model => model.TipoTransacao)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Usuario)
@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.DataTransacao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
+                @Html.DisplayFor(modelItem => item.TipoTransacao.DescricaoTipoTransacao)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario.Email)

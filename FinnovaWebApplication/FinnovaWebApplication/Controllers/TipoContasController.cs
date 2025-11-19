@@ -5,28 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Finnova.Core.Models;
 using FinnovaWebApplication.Data;
+using FinnovaWebApplication.Models;
 
 namespace FinnovaWebApplication.Controllers
 {
-    public class UsuariosController : Controller
+    public class TipoContasController : Controller
     {
         private readonly FinnovaWebApplicationContext _context;
 
-        public UsuariosController(FinnovaWebApplicationContext context)
+        public TipoContasController(FinnovaWebApplicationContext context)
         {
             _context = context;
         }
 
-        // GET: Usuarios
+        // GET: TipoContas
         public async Task<IActionResult> Index()
         {
-            var finnovaWebApplicationContext = _context.Usuario.Include(u => u.TipoUsuario);
-            return View(await finnovaWebApplicationContext.ToListAsync());
+            return View(await _context.TipoConta.ToListAsync());
         }
 
-        // GET: Usuarios/Details/5
+        // GET: TipoContas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +33,39 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario
-                .Include(u => u.TipoUsuario)
-                .FirstOrDefaultAsync(m => m.IdUsuario == id);
-            if (usuario == null)
+            var tipoConta = await _context.TipoConta
+                .FirstOrDefaultAsync(m => m.IdTipoConta == id);
+            if (tipoConta == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(tipoConta);
         }
 
-        // GET: Usuarios/Create
+        // GET: TipoContas/Create
         public IActionResult Create()
         {
-            ViewData["IdTipoUsuario"] = new SelectList(_context.TipoUsuario, "IdTipoUsuario", "DescricaoTipoUsuario");
             return View();
         }
 
-        // POST: Usuarios/Create
+        // POST: TipoContas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,Nome,Email,SenhaHash,SenhaSalt,IdTipoUsuario,Documento,NomeEmpresa,DataCriacao,DataAtualizacao,Ativo")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("IdTipoConta,DescricaoTipoConta")] TipoConta tipoConta)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usuario);
+                _context.Add(tipoConta);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdTipoUsuario"] = new SelectList(_context.TipoUsuario, "IdTipoUsuario", "DescricaoTipoUsuario", usuario.IdTipoUsuario);
-            return View(usuario);
+            return View(tipoConta);
         }
 
-        // GET: Usuarios/Edit/5
+        // GET: TipoContas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +73,22 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario.FindAsync(id);
-            if (usuario == null)
+            var tipoConta = await _context.TipoConta.FindAsync(id);
+            if (tipoConta == null)
             {
                 return NotFound();
             }
-            ViewData["IdTipoUsuario"] = new SelectList(_context.TipoUsuario, "IdTipoUsuario", "DescricaoTipoUsuario", usuario.IdTipoUsuario);
-            return View(usuario);
+            return View(tipoConta);
         }
 
-        // POST: Usuarios/Edit/5
+        // POST: TipoContas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nome,Email,SenhaHash,SenhaSalt,IdTipoUsuario,Documento,NomeEmpresa,DataCriacao,DataAtualizacao,Ativo")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdTipoConta,DescricaoTipoConta")] TipoConta tipoConta)
         {
-            if (id != usuario.IdUsuario)
+            if (id != tipoConta.IdTipoConta)
             {
                 return NotFound();
             }
@@ -102,12 +97,12 @@ namespace FinnovaWebApplication.Controllers
             {
                 try
                 {
-                    _context.Update(usuario);
+                    _context.Update(tipoConta);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.IdUsuario))
+                    if (!TipoContaExists(tipoConta.IdTipoConta))
                     {
                         return NotFound();
                     }
@@ -118,11 +113,10 @@ namespace FinnovaWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdTipoUsuario"] = new SelectList(_context.TipoUsuario, "IdTipoUsuario", "DescricaoTipoUsuario", usuario.IdTipoUsuario);
-            return View(usuario);
+            return View(tipoConta);
         }
 
-        // GET: Usuarios/Delete/5
+        // GET: TipoContas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,35 +124,34 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario
-                .Include(u => u.TipoUsuario)
-                .FirstOrDefaultAsync(m => m.IdUsuario == id);
-            if (usuario == null)
+            var tipoConta = await _context.TipoConta
+                .FirstOrDefaultAsync(m => m.IdTipoConta == id);
+            if (tipoConta == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(tipoConta);
         }
 
-        // POST: Usuarios/Delete/5
+        // POST: TipoContas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
-            if (usuario != null)
+            var tipoConta = await _context.TipoConta.FindAsync(id);
+            if (tipoConta != null)
             {
-                _context.Usuario.Remove(usuario);
+                _context.TipoConta.Remove(tipoConta);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsuarioExists(int id)
+        private bool TipoContaExists(int id)
         {
-            return _context.Usuario.Any(e => e.IdUsuario == id);
+            return _context.TipoConta.Any(e => e.IdTipoConta == id);
         }
     }
 }

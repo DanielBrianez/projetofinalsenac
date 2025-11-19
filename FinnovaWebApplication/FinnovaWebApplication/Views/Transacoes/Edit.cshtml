@@ -24,9 +24,9 @@
                 <span asp-validation-for="DataTransacao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tipo" class="control-label"></label>
-                <select asp-for="Tipo" class="form-control"></select>
-                <span asp-validation-for="Tipo" class="text-danger"></span>
+                <label asp-for="IdTipoTransacao" class="control-label"></label>
+                <select asp-for="IdTipoTransacao" class="form-control" asp-items="ViewBag.IdTipoTransacao"></select>
+                <span asp-validation-for="IdTipoTransacao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdUsuario" class="control-label"></label>

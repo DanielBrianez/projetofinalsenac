@@ -48,7 +48,7 @@ namespace FinnovaWebApplication.Controllers
         // GET: Categorias/Create
         public IActionResult Create()
         {
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email");
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace FinnovaWebApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", categoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", categoria.IdUsuario);
             return View(categoria);
         }
 
@@ -82,7 +82,7 @@ namespace FinnovaWebApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", categoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", categoria.IdUsuario);
             return View(categoria);
         }
 
@@ -118,7 +118,7 @@ namespace FinnovaWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", categoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", categoria.IdUsuario);
             return View(categoria);
         }
 

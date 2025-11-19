@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FinnovaWebApplication.Data;
 using FinnovaWebApplication.Models;
-using Finnova.Core.Models;
 
 namespace FinnovaWebApplication.Controllers
 {
@@ -49,7 +48,7 @@ namespace FinnovaWebApplication.Controllers
         // GET: LogAuditorias/Create
         public IActionResult Create()
         {
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email");
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email");
             return View();
         }
 
@@ -66,7 +65,7 @@ namespace FinnovaWebApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", logAuditoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", logAuditoria.IdUsuario);
             return View(logAuditoria);
         }
 
@@ -83,7 +82,7 @@ namespace FinnovaWebApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", logAuditoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", logAuditoria.IdUsuario);
             return View(logAuditoria);
         }
 
@@ -119,7 +118,7 @@ namespace FinnovaWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", logAuditoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", logAuditoria.IdUsuario);
             return View(logAuditoria);
         }
 

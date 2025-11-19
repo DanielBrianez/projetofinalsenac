@@ -19,10 +19,10 @@
                 @Html.DisplayNameFor(model => model.Banco)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NomeConta)
+                @Html.DisplayNameFor(model => model.TipoConta)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tipo)
+                @Html.DisplayNameFor(model => model.NomeConta)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SaldoInicial)
@@ -52,10 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Banco.Codigo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NomeConta)
+                @Html.DisplayFor(modelItem => item.TipoConta.DescricaoTipoConta)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
+                @Html.DisplayFor(modelItem => item.NomeConta)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SaldoInicial)

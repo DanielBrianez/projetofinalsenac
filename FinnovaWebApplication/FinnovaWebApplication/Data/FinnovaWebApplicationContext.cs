@@ -105,5 +105,8 @@ namespace FinnovaWebApplication.Data
                 .HasForeignKey(l => l.IdUsuario)
                 .OnDelete(DeleteBehavior.Cascade);
         }
+        public DbSet<FinnovaWebApplication.Models.TipoConta> TipoConta { get; set; } = default!;
+        public DbSet<FinnovaWebApplication.Models.TipoTransacao> TipoTransacao { get; set; } = default!;
+        public DbSet<FinnovaWebApplication.Models.TipoUsuario> TipoUsuario { get; set; } = default!;
     }
 }
