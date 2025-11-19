@@ -32,8 +32,8 @@ namespace Finnova.Core.Models
         [MaxLength(512)]
         public string SenhaSalt { get; set; } = string.Empty;
 
-        [Display(Name = "Data de Nascimento")]
-        public DateTime DataNascimento { get; set; }
+        //[Display(Name = "Data de Nascimento")]
+        //public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]
         [Display(Name = "Tipo de Usuário")]
