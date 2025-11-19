@@ -46,7 +46,6 @@
             btnEntrar = new Guna.UI2.WinForms.Guna2Button();
             btnGoogle = new Guna.UI2.WinForms.Guna2Button();
             btnFechar = new Guna.UI2.WinForms.Guna2CircleButton();
-            lblSenha = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblCadastro = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -171,16 +170,6 @@
             btnFechar.TabIndex = 5;
             btnFechar.Text = "X";
             // 
-            // lblSenha
-            // 
-            lblSenha.BackColor = Color.Transparent;
-            lblSenha.Font = new Font("Poppins", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSenha.Location = new Point(890, 371);
-            lblSenha.Name = "lblSenha";
-            lblSenha.Size = new Size(149, 28);
-            lblSenha.TabIndex = 6;
-            lblSenha.Text = "Esqueceu a senha?";
-            // 
             // lblCadastro
             // 
             lblCadastro.BackColor = Color.Transparent;
@@ -200,7 +189,6 @@
             BackColor = Color.FromArgb(244, 246, 248);
             ClientSize = new Size(1150, 750);
             Controls.Add(lblCadastro);
-            Controls.Add(lblSenha);
             Controls.Add(btnFechar);
             Controls.Add(btnGoogle);
             Controls.Add(btnEntrar);
@@ -225,6 +213,6 @@
         private Guna.UI2.WinForms.Guna2Button btnEntrar;
         private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblCadastro;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblSenha;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblEsqueciSenha;
     }
 }
