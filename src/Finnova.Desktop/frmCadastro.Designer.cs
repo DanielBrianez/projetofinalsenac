@@ -57,7 +57,7 @@
             // 
             pictureBox1.BackColor = Color.White;
             pictureBox1.Image = Properties.Resources.CadastroDark;
-            pictureBox1.Location = new Point(1, 0);
+            pictureBox1.Location = new Point(0, -1);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1150, 750);
             pictureBox1.TabIndex = 0;
