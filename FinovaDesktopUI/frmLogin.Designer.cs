@@ -59,7 +59,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = FinnovaDesktopUI.Properties.Resources.InicioDark;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1150, 750);
@@ -70,6 +70,7 @@
             // 
             txtLogin.BackColor = Color.White;
             txtLogin.BorderColor = Color.White;
+            txtLogin.BorderRadius = 8;
             txtLogin.CustomizableEdges = customizableEdges8;
             txtLogin.DefaultText = "";
             txtLogin.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -93,6 +94,7 @@
             // 
             txtSenha.BackColor = Color.White;
             txtSenha.BorderColor = Color.White;
+            txtSenha.BorderRadius = 8;
             txtSenha.CustomizableEdges = customizableEdges6;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -109,12 +111,13 @@
             txtSenha.PlaceholderText = "";
             txtSenha.SelectedText = "";
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            txtSenha.Size = new Size(393, 42);
+            txtSenha.Size = new Size(391, 42);
             txtSenha.TabIndex = 2;
             txtSenha.UseSystemPasswordChar = true;
             // 
             // btnEntrar
             // 
+            btnEntrar.BorderRadius = 8;
             btnEntrar.CustomizableEdges = customizableEdges4;
             btnEntrar.DisabledState.BorderColor = Color.DarkGray;
             btnEntrar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -133,6 +136,7 @@
             // btnGoogle
             // 
             btnGoogle.BorderColor = Color.DimGray;
+            btnGoogle.BorderRadius = 8;
             btnGoogle.CustomizableEdges = customizableEdges2;
             btnGoogle.DisabledState.BorderColor = Color.DarkGray;
             btnGoogle.DisabledState.CustomBorderColor = Color.DarkGray;

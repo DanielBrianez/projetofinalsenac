@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastro));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -41,6 +40,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastro));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pictureBox1 = new PictureBox();
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
@@ -55,8 +55,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Image = Properties.Resources.CadastroDark;
+            pictureBox1.Location = new Point(1, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1150, 750);
             pictureBox1.TabIndex = 0;
@@ -66,6 +66,7 @@
             // 
             txtNome.BackColor = Color.White;
             txtNome.BorderColor = Color.White;
+            txtNome.BorderRadius = 8;
             txtNome.CustomizableEdges = customizableEdges1;
             txtNome.DefaultText = "";
             txtNome.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -82,13 +83,14 @@
             txtNome.PlaceholderText = "";
             txtNome.SelectedText = "";
             txtNome.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtNome.Size = new Size(394, 42);
+            txtNome.Size = new Size(391, 42);
             txtNome.TabIndex = 2;
             // 
             // txtSenha
             // 
             txtSenha.BackColor = Color.White;
             txtSenha.BorderColor = Color.White;
+            txtSenha.BorderRadius = 8;
             txtSenha.CustomizableEdges = customizableEdges3;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -99,19 +101,20 @@
             txtSenha.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSenha.ForeColor = Color.White;
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(644, 416);
+            txtSenha.Location = new Point(647, 416);
             txtSenha.Margin = new Padding(3, 4, 3, 4);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "";
             txtSenha.SelectedText = "";
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtSenha.Size = new Size(394, 42);
+            txtSenha.Size = new Size(391, 42);
             txtSenha.TabIndex = 3;
             // 
             // txtLogin
             // 
             txtLogin.BackColor = Color.White;
             txtLogin.BorderColor = Color.White;
+            txtLogin.BorderRadius = 8;
             txtLogin.CustomizableEdges = customizableEdges5;
             txtLogin.DefaultText = "";
             txtLogin.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -122,17 +125,18 @@
             txtLogin.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtLogin.ForeColor = Color.White;
             txtLogin.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtLogin.Location = new Point(644, 328);
+            txtLogin.Location = new Point(646, 328);
             txtLogin.Margin = new Padding(3, 4, 3, 4);
             txtLogin.Name = "txtLogin";
             txtLogin.PlaceholderText = "";
             txtLogin.SelectedText = "";
             txtLogin.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            txtLogin.Size = new Size(394, 42);
+            txtLogin.Size = new Size(391, 42);
             txtLogin.TabIndex = 4;
             // 
             // guna2Button1
             // 
+            guna2Button1.BorderRadius = 8;
             guna2Button1.CustomizableEdges = customizableEdges7;
             guna2Button1.DisabledState.BorderColor = Color.DarkGray;
             guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -141,10 +145,10 @@
             guna2Button1.FillColor = Color.FromArgb(9, 20, 137);
             guna2Button1.Font = new Font("Poppins", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(644, 478);
+            guna2Button1.Location = new Point(645, 477);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Button1.Size = new Size(394, 45);
+            guna2Button1.Size = new Size(395, 47);
             guna2Button1.TabIndex = 6;
             guna2Button1.Text = "Cadastrar";
             // 
@@ -168,23 +172,25 @@
             // 
             // guna2DateTimePicker1
             // 
+            guna2DateTimePicker1.BorderRadius = 8;
             guna2DateTimePicker1.Checked = true;
             guna2DateTimePicker1.CustomizableEdges = customizableEdges10;
             guna2DateTimePicker1.FillColor = SystemColors.Window;
             guna2DateTimePicker1.Font = new Font("Segoe UI", 9F);
             guna2DateTimePicker1.Format = DateTimePickerFormat.Long;
-            guna2DateTimePicker1.Location = new Point(644, 240);
+            guna2DateTimePicker1.Location = new Point(646, 240);
             guna2DateTimePicker1.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             guna2DateTimePicker1.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             guna2DateTimePicker1.Name = "guna2DateTimePicker1";
             guna2DateTimePicker1.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            guna2DateTimePicker1.Size = new Size(394, 43);
+            guna2DateTimePicker1.Size = new Size(395, 43);
             guna2DateTimePicker1.TabIndex = 8;
             guna2DateTimePicker1.Value = new DateTime(2025, 11, 18, 20, 47, 46, 708);
             // 
             // btnGoogle
             // 
             btnGoogle.BorderColor = Color.DimGray;
+            btnGoogle.BorderRadius = 8;
             btnGoogle.CustomizableEdges = customizableEdges12;
             btnGoogle.DisabledState.BorderColor = Color.DarkGray;
             btnGoogle.DisabledState.CustomBorderColor = Color.DarkGray;
