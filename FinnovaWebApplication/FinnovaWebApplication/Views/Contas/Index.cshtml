@@ -22,7 +22,10 @@
                 @Html.DisplayNameFor(model => model.NomeConta)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tipo)
+                @Html.DisplayNameFor(model => model.TipoConta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoInvestimento)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SaldoInicial)
@@ -32,9 +35,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DataCriacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataAtualizacao)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ativo)
@@ -55,7 +55,10 @@
                 @Html.DisplayFor(modelItem => item.NomeConta)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
+                @Html.DisplayFor(modelItem => item.TipoConta.DescricaoTipoConta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoInvestimento.DescricaoTipoInvestimento)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SaldoInicial)
@@ -65,9 +68,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataCriacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataAtualizacao)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ativo)

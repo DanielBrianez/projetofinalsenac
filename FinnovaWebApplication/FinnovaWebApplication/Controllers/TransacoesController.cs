@@ -22,7 +22,7 @@ namespace FinnovaWebApplication.Controllers
         // GET: Transacoes
         public async Task<IActionResult> Index()
         {
-            var finnovaWebApplicationContext = _context.Transacao.Include(t => t.Categoria).Include(t => t.Conta).Include(t => t.Subcategoria).Include(t => t.Usuario);
+            var finnovaWebApplicationContext = _context.Transacao.Include(t => t.Categoria).Include(t => t.Conta).Include(t => t.Subcategoria).Include(t => t.TipoTransacao).Include(t => t.Usuario);
             return View(await finnovaWebApplicationContext.ToListAsync());
         }
 
@@ -38,6 +38,7 @@ namespace FinnovaWebApplication.Controllers
                 .Include(t => t.Categoria)
                 .Include(t => t.Conta)
                 .Include(t => t.Subcategoria)
+                .Include(t => t.TipoTransacao)
                 .Include(t => t.Usuario)
                 .FirstOrDefaultAsync(m => m.IdTransacao == id);
             if (transacao == null)
@@ -54,6 +55,7 @@ namespace FinnovaWebApplication.Controllers
             ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Nome");
             ViewData["IdConta"] = new SelectList(_context.Conta, "IdConta", "NomeConta");
             ViewData["IdSubcategoria"] = new SelectList(_context.Subcategoria, "IdSubcategoria", "Nome");
+            ViewData["IdTipoTransacao"] = new SelectList(_context.TipoTransacao, "IdTipoTransacao", "DescricaoTipoTransacao");
             ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email");
             return View();
         }
@@ -63,7 +65,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdTransacao,Valor,DataTransacao,Tipo,IdUsuario,IdConta,IdCategoria,IdSubcategoria,Descricao,CriadoEm,AtualizadoEm")] Transacao transacao)
+        public async Task<IActionResult> Create([Bind("IdTransacao,Valor,DataTransacao,IdTipoTransacao,IdUsuario,IdConta,IdCategoria,IdSubcategoria,Descricao")] Transacao transacao)
         {
             if (ModelState.IsValid)
             {
@@ -74,6 +76,7 @@ namespace FinnovaWebApplication.Controllers
             ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Nome", transacao.IdCategoria);
             ViewData["IdConta"] = new SelectList(_context.Conta, "IdConta", "NomeConta", transacao.IdConta);
             ViewData["IdSubcategoria"] = new SelectList(_context.Subcategoria, "IdSubcategoria", "Nome", transacao.IdSubcategoria);
+            ViewData["IdTipoTransacao"] = new SelectList(_context.TipoTransacao, "IdTipoTransacao", "DescricaoTipoTransacao", transacao.IdTipoTransacao);
             ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", transacao.IdUsuario);
             return View(transacao);
         }
@@ -94,6 +97,7 @@ namespace FinnovaWebApplication.Controllers
             ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Nome", transacao.IdCategoria);
             ViewData["IdConta"] = new SelectList(_context.Conta, "IdConta", "NomeConta", transacao.IdConta);
             ViewData["IdSubcategoria"] = new SelectList(_context.Subcategoria, "IdSubcategoria", "Nome", transacao.IdSubcategoria);
+            ViewData["IdTipoTransacao"] = new SelectList(_context.TipoTransacao, "IdTipoTransacao", "DescricaoTipoTransacao", transacao.IdTipoTransacao);
             ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", transacao.IdUsuario);
             return View(transacao);
         }
@@ -103,7 +107,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdTransacao,Valor,DataTransacao,Tipo,IdUsuario,IdConta,IdCategoria,IdSubcategoria,Descricao,CriadoEm,AtualizadoEm")] Transacao transacao)
+        public async Task<IActionResult> Edit(int id, [Bind("IdTransacao,Valor,DataTransacao,IdTipoTransacao,IdUsuario,IdConta,IdCategoria,IdSubcategoria,Descricao")] Transacao transacao)
         {
             if (id != transacao.IdTransacao)
             {
@@ -133,6 +137,7 @@ namespace FinnovaWebApplication.Controllers
             ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Nome", transacao.IdCategoria);
             ViewData["IdConta"] = new SelectList(_context.Conta, "IdConta", "NomeConta", transacao.IdConta);
             ViewData["IdSubcategoria"] = new SelectList(_context.Subcategoria, "IdSubcategoria", "Nome", transacao.IdSubcategoria);
+            ViewData["IdTipoTransacao"] = new SelectList(_context.TipoTransacao, "IdTipoTransacao", "DescricaoTipoTransacao", transacao.IdTipoTransacao);
             ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", transacao.IdUsuario);
             return View(transacao);
         }
@@ -149,6 +154,7 @@ namespace FinnovaWebApplication.Controllers
                 .Include(t => t.Categoria)
                 .Include(t => t.Conta)
                 .Include(t => t.Subcategoria)
+                .Include(t => t.TipoTransacao)
                 .Include(t => t.Usuario)
                 .FirstOrDefaultAsync(m => m.IdTransacao == id);
             if (transacao == null)

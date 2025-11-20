@@ -48,7 +48,7 @@ namespace FinnovaWebApplication.Controllers
         // GET: Categorias/Create
         public IActionResult Create()
         {
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email");
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Nome");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCategoria,IdUsuario,Nome,Descricao,DataCriacao,DataAtualizacao,Ativo")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("IdCategoria,IdUsuario,Nome,Descricao,DataCriacao,Ativo")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace FinnovaWebApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", categoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Nome", categoria.IdUsuario);
             return View(categoria);
         }
 
@@ -82,7 +82,7 @@ namespace FinnovaWebApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", categoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Nome", categoria.IdUsuario);
             return View(categoria);
         }
 
@@ -91,7 +91,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCategoria,IdUsuario,Nome,Descricao,DataCriacao,DataAtualizacao,Ativo")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCategoria,IdUsuario,Nome,Descricao,DataCriacao,Ativo")] Categoria categoria)
         {
             if (id != categoria.IdCategoria)
             {
@@ -118,7 +118,7 @@ namespace FinnovaWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", categoria.IdUsuario);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Nome", categoria.IdUsuario);
             return View(categoria);
         }
 

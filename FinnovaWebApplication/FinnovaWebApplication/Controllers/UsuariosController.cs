@@ -54,7 +54,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,Nome,Email,SenhaHash,SenhaSalt,TipoUsuario,Documento,NomeEmpresa,DataCriacao,DataAtualizacao,Ativo")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("IdUsuario,Nome,Email,SenhaHash,Documento,DataNascimento,DataCriacao,Ativo")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nome,Email,SenhaHash,SenhaSalt,TipoUsuario,Documento,NomeEmpresa,DataCriacao,DataAtualizacao,Ativo")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nome,Email,SenhaHash,Documento,DataNascimento,DataCriacao,Ativo")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {

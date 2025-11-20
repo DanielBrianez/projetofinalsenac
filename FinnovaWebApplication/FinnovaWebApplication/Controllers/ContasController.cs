@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Finnova.Core.Models;
 using FinnovaWebApplication.Data;
+using FinnovaWebApplication.Models;
 
 namespace FinnovaWebApplication.Controllers
 {
@@ -22,7 +23,7 @@ namespace FinnovaWebApplication.Controllers
         // GET: Contas
         public async Task<IActionResult> Index()
         {
-            var finnovaWebApplicationContext = _context.Conta.Include(c => c.Banco).Include(c => c.Usuario);
+            var finnovaWebApplicationContext = _context.Conta.Include(c => c.Banco).Include(c => c.TipoConta).Include(c => c.TipoInvestimento).Include(c => c.Usuario);
             return View(await finnovaWebApplicationContext.ToListAsync());
         }
 
@@ -36,6 +37,8 @@ namespace FinnovaWebApplication.Controllers
 
             var conta = await _context.Conta
                 .Include(c => c.Banco)
+                .Include(c => c.TipoConta)
+                .Include(c => c.TipoInvestimento)
                 .Include(c => c.Usuario)
                 .FirstOrDefaultAsync(m => m.IdConta == id);
             if (conta == null)
@@ -50,7 +53,9 @@ namespace FinnovaWebApplication.Controllers
         public IActionResult Create()
         {
             ViewData["IdBanco"] = new SelectList(_context.Banco, "IdBanco", "Codigo");
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email");
+            ViewData["IdTipoConta"] = new SelectList(_context.TipoConta, "IdTipoConta", "DescricaoTipoConta");
+            ViewData["IdTipoInvestimento"] = new SelectList(_context.Set<TipoInvestimento>(), "IdTipoInvestimento", "DescricaoTipoInvestimento");
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email");
             return View();
         }
 
@@ -59,7 +64,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdConta,IdUsuario,IdBanco,NomeConta,Tipo,SaldoInicial,SaldoAtual,DataCriacao,DataAtualizacao,Ativo")] Conta conta)
+        public async Task<IActionResult> Create([Bind("IdConta,IdUsuario,IdBanco,NomeConta,IdTipoConta,IdTipoInvestimento,SaldoInicial,SaldoAtual,DataCriacao,Ativo")] Conta conta)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +73,9 @@ namespace FinnovaWebApplication.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdBanco"] = new SelectList(_context.Banco, "IdBanco", "Codigo", conta.IdBanco);
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", conta.IdUsuario);
+            ViewData["IdTipoConta"] = new SelectList(_context.TipoConta, "IdTipoConta", "DescricaoTipoConta", conta.IdTipoConta);
+            ViewData["IdTipoInvestimento"] = new SelectList(_context.Set<TipoInvestimento>(), "IdTipoInvestimento", "DescricaoTipoInvestimento", conta.IdTipoInvestimento);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", conta.IdUsuario);
             return View(conta);
         }
 
@@ -86,7 +93,9 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
             ViewData["IdBanco"] = new SelectList(_context.Banco, "IdBanco", "Codigo", conta.IdBanco);
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", conta.IdUsuario);
+            ViewData["IdTipoConta"] = new SelectList(_context.TipoConta, "IdTipoConta", "DescricaoTipoConta", conta.IdTipoConta);
+            ViewData["IdTipoInvestimento"] = new SelectList(_context.Set<TipoInvestimento>(), "IdTipoInvestimento", "DescricaoTipoInvestimento", conta.IdTipoInvestimento);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", conta.IdUsuario);
             return View(conta);
         }
 
@@ -95,7 +104,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdConta,IdUsuario,IdBanco,NomeConta,Tipo,SaldoInicial,SaldoAtual,DataCriacao,DataAtualizacao,Ativo")] Conta conta)
+        public async Task<IActionResult> Edit(int id, [Bind("IdConta,IdUsuario,IdBanco,NomeConta,IdTipoConta,IdTipoInvestimento,SaldoInicial,SaldoAtual,DataCriacao,Ativo")] Conta conta)
         {
             if (id != conta.IdConta)
             {
@@ -123,7 +132,9 @@ namespace FinnovaWebApplication.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdBanco"] = new SelectList(_context.Banco, "IdBanco", "Codigo", conta.IdBanco);
-            ViewData["IdUsuario"] = new SelectList(_context.Set<Usuario>(), "IdUsuario", "Email", conta.IdUsuario);
+            ViewData["IdTipoConta"] = new SelectList(_context.TipoConta, "IdTipoConta", "DescricaoTipoConta", conta.IdTipoConta);
+            ViewData["IdTipoInvestimento"] = new SelectList(_context.Set<TipoInvestimento>(), "IdTipoInvestimento", "DescricaoTipoInvestimento", conta.IdTipoInvestimento);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Email", conta.IdUsuario);
             return View(conta);
         }
 
@@ -137,6 +148,8 @@ namespace FinnovaWebApplication.Controllers
 
             var conta = await _context.Conta
                 .Include(c => c.Banco)
+                .Include(c => c.TipoConta)
+                .Include(c => c.TipoInvestimento)
                 .Include(c => c.Usuario)
                 .FirstOrDefaultAsync(m => m.IdConta == id);
             if (conta == null)

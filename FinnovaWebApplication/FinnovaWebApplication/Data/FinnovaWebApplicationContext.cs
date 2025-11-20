@@ -104,6 +104,28 @@ namespace FinnovaWebApplication.Data
                 .WithMany(u => u.LogsAuditoria)
                 .HasForeignKey(l => l.IdUsuario)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<TipoConta>().HasData(
+                new TipoConta { IdTipoConta = 1, DescricaoTipoConta = "Conta Corrente" },
+                new TipoConta { IdTipoConta = 2, DescricaoTipoConta = "Conta Poupança" },
+                new TipoConta { IdTipoConta = 3, DescricaoTipoConta = "Carteira Digital" },
+                new TipoConta { IdTipoConta = 4, DescricaoTipoConta = "Conta de Pagamento" },
+                new TipoConta { IdTipoConta = 5, DescricaoTipoConta = "Investimentos" });
+
+            modelBuilder.Entity<TipoInvestimento>().HasData(
+                new TipoInvestimento { IdTipoInvestimento = 1, DescricaoTipoInvestimento = "Renda Fixa" },
+                new TipoInvestimento { IdTipoInvestimento = 2, DescricaoTipoInvestimento = "Tesouro Direto" },
+                new TipoInvestimento { IdTipoInvestimento = 3, DescricaoTipoInvestimento = "CDB" },
+                new TipoInvestimento { IdTipoInvestimento = 4, DescricaoTipoInvestimento = "Ações" },
+                new TipoInvestimento { IdTipoInvestimento = 5, DescricaoTipoInvestimento = "Fundos Imobiliários (FIIs)" },
+                new TipoInvestimento { IdTipoInvestimento = 6, DescricaoTipoInvestimento = "Criptoativos" }
+);
+
         }
+        public DbSet<TipoConta> TipoConta { get; set; } = default!;
+        public DbSet<TipoTransacao> TipoTransacao { get; set; } = default!;
+        public DbSet<Finnova.Core.Models.Empresa> Empresa { get; set; } = default!;
+        public DbSet<FinnovaWebApplication.Models.TipoInvestimento> TipoInvestimento { get; set; } = default!;
+
     }
 }

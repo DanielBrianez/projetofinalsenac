@@ -4,7 +4,7 @@ using FinnovaWebApplication.Models;
 
 namespace Finnova.Core.Models
 {
-    [Table("Categoria")]
+    [Table("CategoriaDeGasto")]
     public class Categoria
     {
         [Key]
@@ -12,6 +12,7 @@ namespace Finnova.Core.Models
 
         // FK obrigatória: 1 Usuario → N Categorias
         [Required]
+        [Display(Name = "Usuário responsável")]
         [ForeignKey("Usuario")]
         public int IdUsuario { get; set; }
 
@@ -20,14 +21,13 @@ namespace Finnova.Core.Models
         [MaxLength(60)]
         public string Nome { get; set; } = string.Empty;
 
-        [Display(Name = "Descrição")]
+        [Display(Name = "Descrição da categoria")]
         [MaxLength(200)]
         public string? Descricao { get; set; }
 
         [Required]
+        [Display(Name = "Data de criação da categoria")]
         public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
-
-        public DateTime? DataAtualizacao { get; set; }
 
         public bool Ativo { get; set; } = true;
 
