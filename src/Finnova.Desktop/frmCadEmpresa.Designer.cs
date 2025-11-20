@@ -1,6 +1,6 @@
 ﻿namespace FinnovaDesktopUI
 {
-    partial class frmCadastro2
+    partial class frmCadEmpresa
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastro2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadEmpresa));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -47,14 +47,15 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            brdCadPessoa = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
+            brdCadEmpresa = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            txtCpf = new Guna.UI2.WinForms.Guna2TextBox();
+            label1 = new Label();
+            txtCnpj = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnGoogle = new Guna.UI2.WinForms.Guna2Button();
             txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            dtpDataNascimento = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            txtNome = new Guna.UI2.WinForms.Guna2TextBox();
+            dtpDataFundacao = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            txtNomeEmpresa = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -66,28 +67,27 @@
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            label1 = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // brdCadPessoa
+            // brdCadEmpresa
             // 
-            brdCadPessoa.ContainerControl = this;
-            brdCadPessoa.DockIndicatorTransparencyValue = 0.6D;
-            brdCadPessoa.TransparentWhileDrag = true;
+            brdCadEmpresa.ContainerControl = this;
+            brdCadEmpresa.DockIndicatorTransparencyValue = 0.6D;
+            brdCadEmpresa.TransparentWhileDrag = true;
             // 
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.Transparent;
             guna2Panel1.BorderRadius = 15;
             guna2Panel1.Controls.Add(label1);
-            guna2Panel1.Controls.Add(txtCpf);
+            guna2Panel1.Controls.Add(txtCnpj);
             guna2Panel1.Controls.Add(guna2HtmlLabel8);
             guna2Panel1.Controls.Add(btnGoogle);
             guna2Panel1.Controls.Add(txtEmail);
-            guna2Panel1.Controls.Add(dtpDataNascimento);
-            guna2Panel1.Controls.Add(txtNome);
+            guna2Panel1.Controls.Add(dtpDataFundacao);
+            guna2Panel1.Controls.Add(txtNomeEmpresa);
             guna2Panel1.Controls.Add(guna2Separator2);
             guna2Panel1.Controls.Add(guna2Separator1);
             guna2Panel1.Controls.Add(guna2HtmlLabel6);
@@ -105,30 +105,41 @@
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges33;
             guna2Panel1.Size = new Size(490, 710);
-            guna2Panel1.TabIndex = 0;
+            guna2Panel1.TabIndex = 1;
             // 
-            // txtCpf
+            // label1
             // 
-            txtCpf.BorderColor = SystemColors.ControlDark;
-            txtCpf.BorderRadius = 8;
-            txtCpf.BorderThickness = 2;
-            txtCpf.Cursor = Cursors.IBeam;
-            txtCpf.CustomizableEdges = customizableEdges18;
-            txtCpf.DefaultText = "";
-            txtCpf.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtCpf.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtCpf.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtCpf.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtCpf.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtCpf.Font = new Font("Segoe UI", 9F);
-            txtCpf.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtCpf.Location = new Point(32, 286);
-            txtCpf.Name = "txtCpf";
-            txtCpf.PlaceholderText = "";
-            txtCpf.SelectedText = "";
-            txtCpf.ShadowDecoration.CustomizableEdges = customizableEdges19;
-            txtCpf.Size = new Size(422, 44);
-            txtCpf.TabIndex = 10;
+            label1.AutoSize = true;
+            label1.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(62, 644);
+            label1.Name = "label1";
+            label1.Size = new Size(361, 44);
+            label1.TabIndex = 12;
+            label1.Text = "Ao se cadastrar, você concorda com os Termos, Condições,\r\nPolíticas da Finnova e com a Politica de Privacidade.";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtCnpj
+            // 
+            txtCnpj.BorderColor = SystemColors.ControlDark;
+            txtCnpj.BorderRadius = 8;
+            txtCnpj.BorderThickness = 2;
+            txtCnpj.Cursor = Cursors.IBeam;
+            txtCnpj.CustomizableEdges = customizableEdges18;
+            txtCnpj.DefaultText = "";
+            txtCnpj.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtCnpj.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtCnpj.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtCnpj.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtCnpj.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtCnpj.Font = new Font("Segoe UI", 9F);
+            txtCnpj.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtCnpj.Location = new Point(32, 286);
+            txtCnpj.Name = "txtCnpj";
+            txtCnpj.PlaceholderText = "";
+            txtCnpj.SelectedText = "";
+            txtCnpj.ShadowDecoration.CustomizableEdges = customizableEdges19;
+            txtCnpj.Size = new Size(422, 44);
+            txtCnpj.TabIndex = 10;
             // 
             // guna2HtmlLabel8
             // 
@@ -137,9 +148,9 @@
             guna2HtmlLabel8.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel8.Location = new Point(31, 255);
             guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            guna2HtmlLabel8.Size = new Size(31, 25);
+            guna2HtmlLabel8.Size = new Size(40, 25);
             guna2HtmlLabel8.TabIndex = 9;
-            guna2HtmlLabel8.Text = "CPF:";
+            guna2HtmlLabel8.Text = "CNPJ:";
             // 
             // btnGoogle
             // 
@@ -186,47 +197,47 @@
             txtEmail.Size = new Size(423, 44);
             txtEmail.TabIndex = 2;
             // 
-            // dtpDataNascimento
+            // dtpDataFundacao
             // 
-            dtpDataNascimento.BorderRadius = 8;
-            dtpDataNascimento.Checked = true;
-            dtpDataNascimento.Cursor = Cursors.Hand;
-            dtpDataNascimento.CustomizableEdges = customizableEdges24;
-            dtpDataNascimento.FillColor = Color.Silver;
-            dtpDataNascimento.Font = new Font("Segoe UI", 9F);
-            dtpDataNascimento.Format = DateTimePickerFormat.Long;
-            dtpDataNascimento.Location = new Point(32, 367);
-            dtpDataNascimento.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            dtpDataNascimento.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            dtpDataNascimento.Name = "dtpDataNascimento";
-            dtpDataNascimento.ShadowDecoration.CustomizableEdges = customizableEdges25;
-            dtpDataNascimento.Size = new Size(422, 44);
-            dtpDataNascimento.TabIndex = 3;
-            dtpDataNascimento.Value = new DateTime(2025, 11, 19, 14, 36, 23, 175);
+            dtpDataFundacao.BorderRadius = 8;
+            dtpDataFundacao.Checked = true;
+            dtpDataFundacao.Cursor = Cursors.Hand;
+            dtpDataFundacao.CustomizableEdges = customizableEdges24;
+            dtpDataFundacao.FillColor = Color.Silver;
+            dtpDataFundacao.Font = new Font("Segoe UI", 9F);
+            dtpDataFundacao.Format = DateTimePickerFormat.Long;
+            dtpDataFundacao.Location = new Point(32, 367);
+            dtpDataFundacao.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpDataFundacao.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpDataFundacao.Name = "dtpDataFundacao";
+            dtpDataFundacao.ShadowDecoration.CustomizableEdges = customizableEdges25;
+            dtpDataFundacao.Size = new Size(422, 44);
+            dtpDataFundacao.TabIndex = 3;
+            dtpDataFundacao.Value = new DateTime(2025, 11, 19, 14, 36, 23, 175);
             // 
-            // txtNome
+            // txtNomeEmpresa
             // 
-            txtNome.BorderColor = SystemColors.ControlDark;
-            txtNome.BorderRadius = 8;
-            txtNome.BorderThickness = 2;
-            txtNome.Cursor = Cursors.IBeam;
-            txtNome.CustomizableEdges = customizableEdges26;
-            txtNome.DefaultText = "";
-            txtNome.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtNome.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtNome.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtNome.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(31, 123);
-            txtNome.Margin = new Padding(3, 4, 3, 4);
-            txtNome.Name = "txtNome";
-            txtNome.PlaceholderText = "";
-            txtNome.SelectedText = "";
-            txtNome.ShadowDecoration.CustomizableEdges = customizableEdges27;
-            txtNome.Size = new Size(423, 44);
-            txtNome.TabIndex = 2;
+            txtNomeEmpresa.BorderColor = SystemColors.ControlDark;
+            txtNomeEmpresa.BorderRadius = 8;
+            txtNomeEmpresa.BorderThickness = 2;
+            txtNomeEmpresa.Cursor = Cursors.IBeam;
+            txtNomeEmpresa.CustomizableEdges = customizableEdges26;
+            txtNomeEmpresa.DefaultText = "";
+            txtNomeEmpresa.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtNomeEmpresa.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtNomeEmpresa.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtNomeEmpresa.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtNomeEmpresa.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtNomeEmpresa.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNomeEmpresa.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtNomeEmpresa.Location = new Point(31, 123);
+            txtNomeEmpresa.Margin = new Padding(3, 4, 3, 4);
+            txtNomeEmpresa.Name = "txtNomeEmpresa";
+            txtNomeEmpresa.PlaceholderText = "";
+            txtNomeEmpresa.SelectedText = "";
+            txtNomeEmpresa.ShadowDecoration.CustomizableEdges = customizableEdges27;
+            txtNomeEmpresa.Size = new Size(423, 44);
+            txtNomeEmpresa.TabIndex = 2;
             // 
             // guna2Separator2
             // 
@@ -306,9 +317,9 @@
             guna2HtmlLabel3.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel3.Location = new Point(32, 336);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(145, 25);
+            guna2HtmlLabel3.Size = new Size(134, 25);
             guna2HtmlLabel3.TabIndex = 1;
-            guna2HtmlLabel3.Text = "DATA DE NASCIMENTO:";
+            guna2HtmlLabel3.Text = "DATA DE FUNDAÇÃO:";
             // 
             // guna2HtmlLabel5
             // 
@@ -339,9 +350,9 @@
             guna2HtmlLabel2.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.Location = new Point(31, 91);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(115, 25);
+            guna2HtmlLabel2.Size = new Size(125, 25);
             guna2HtmlLabel2.TabIndex = 1;
-            guna2HtmlLabel2.Text = "NOME COMPLETO:";
+            guna2HtmlLabel2.Text = "NOME DA EMPRESA:";
             // 
             // guna2HtmlLabel1
             // 
@@ -357,6 +368,7 @@
             // 
             // guna2CirclePictureBox1
             // 
+            guna2CirclePictureBox1.Enabled = false;
             guna2CirclePictureBox1.Image = Properties.Resources.fraseDarkPNG;
             guna2CirclePictureBox1.ImageRotate = 0F;
             guna2CirclePictureBox1.Location = new Point(35, 136);
@@ -364,34 +376,22 @@
             guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges34;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox1.Size = new Size(512, 512);
-            guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            guna2CirclePictureBox1.TabIndex = 1;
+            guna2CirclePictureBox1.TabIndex = 2;
             guna2CirclePictureBox1.TabStop = false;
             // 
-            // label1
+            // frmCadEmpresa
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(62, 644);
-            label1.Name = "label1";
-            label1.Size = new Size(361, 44);
-            label1.TabIndex = 12;
-            label1.Text = "Ao se cadastrar, você concorda com os Termos, Condições,\r\nPolíticas da Finnova e com a Politica de Privacidade.";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // frmCadastro2
-            // 
-            AutoScaleDimensions = new SizeF(7F, 22F);
+            AutoScaleDimensions = new SizeF(8F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(1, 5, 33);
             ClientSize = new Size(1134, 788);
             Controls.Add(guna2CirclePictureBox1);
             Controls.Add(guna2Panel1);
-            Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "frmCadastro2";
-            Text = "frmCadastro2";
+            Margin = new Padding(3, 5, 3, 5);
+            Name = "frmCadEmpresa";
+            Text = "frmCadEmpresa";
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
@@ -400,25 +400,25 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2BorderlessForm brdCadPessoa;
+        private Guna.UI2.WinForms.Guna2BorderlessForm brdCadEmpresa;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Label label1;
+        private Guna.UI2.WinForms.Guna2TextBox txtCnpj;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
+        private Guna.UI2.WinForms.Guna2Button btnGoogle;
+        private Guna.UI2.WinForms.Guna2TextBox txtEmail;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDataFundacao;
+        private Guna.UI2.WinForms.Guna2TextBox txtNomeEmpresa;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2Button btnCadastrar;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDataNascimento;
-        private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
-        private Guna.UI2.WinForms.Guna2TextBox txtNome;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
-        private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
-        private Guna.UI2.WinForms.Guna2Button btnGoogle;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
-        private Guna.UI2.WinForms.Guna2TextBox txtCpf;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
-        private Label label1;
     }
 }
