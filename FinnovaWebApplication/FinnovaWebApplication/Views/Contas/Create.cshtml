@@ -21,13 +21,17 @@
                 <select asp-for="IdBanco" class ="form-control" asp-items="ViewBag.IdBanco"></select>
             </div>
             <div class="form-group">
+                <label asp-for="NomeConta" class="control-label"></label>
+                <input asp-for="NomeConta" class="form-control" />
+                <span asp-validation-for="NomeConta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="IdTipoConta" class="control-label"></label>
                 <select asp-for="IdTipoConta" class ="form-control" asp-items="ViewBag.IdTipoConta"></select>
             </div>
             <div class="form-group">
-                <label asp-for="NomeConta" class="control-label"></label>
-                <input asp-for="NomeConta" class="form-control" />
-                <span asp-validation-for="NomeConta" class="text-danger"></span>
+                <label asp-for="IdTipoInvestimento" class="control-label"></label>
+                <select asp-for="IdTipoInvestimento" class ="form-control" asp-items="ViewBag.IdTipoInvestimento"></select>
             </div>
             <div class="form-group">
                 <label asp-for="SaldoInicial" class="control-label"></label>
@@ -43,11 +47,6 @@
                 <label asp-for="DataCriacao" class="control-label"></label>
                 <input asp-for="DataCriacao" class="form-control" />
                 <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAtualizacao" class="control-label"></label>
-                <input asp-for="DataAtualizacao" class="form-control" />
-                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">

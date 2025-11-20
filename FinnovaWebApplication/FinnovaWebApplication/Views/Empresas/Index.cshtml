@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Finnova.Core.Models.Usuario>
+﻿@model IEnumerable<Finnova.Core.Models.Empresa>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.NomeFantasia)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
@@ -22,16 +22,16 @@
                 @Html.DisplayNameFor(model => model.SenhaHash)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Documento)
+                @Html.DisplayNameFor(model => model.CNPJ)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataNascimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCriacao)
+                @Html.DisplayNameFor(model => model.DataFundacao)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCriacao)
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                @Html.DisplayFor(modelItem => item.NomeFantasia)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
@@ -49,21 +49,21 @@
                 @Html.DisplayFor(modelItem => item.SenhaHash)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Documento)
+                @Html.DisplayFor(modelItem => item.CNPJ)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataNascimento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCriacao)
+                @Html.DisplayFor(modelItem => item.DataFundacao)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ativo)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
+                @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdEmpresa">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdEmpresa">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdEmpresa">Delete</a>
             </td>
         </tr>
 }

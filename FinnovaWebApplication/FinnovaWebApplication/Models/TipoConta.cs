@@ -1,8 +1,10 @@
 ﻿using Finnova.Core.Models;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinnovaWebApplication.Models
 {
+    [Table("TipoConta")]
     public class TipoConta
     {
         [Key]

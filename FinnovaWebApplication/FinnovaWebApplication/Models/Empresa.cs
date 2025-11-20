@@ -4,54 +4,57 @@ using FinnovaWebApplication.Models;
 
 namespace Finnova.Core.Models
 {
-    [Table("Usuario")]
-    public class Usuario
+    [Table("Empresa")]
+    public class Empresa
     {
-        public Usuario()
+        public Empresa()
         {
-            DataCriacao = DateTime.UtcNow; // valor padrão automático
+            DataCriacao = DateTime.UtcNow; // Valor padrão
         }
 
         [Key]
-        public int IdUsuario { get; set; }
+        public int IdEmpresa { get; set; }
 
         // Dados básicos
-        [Required(ErrorMessage = "O nome é obrigatório.")]
-        [Display(Name = "Nome completo")]
+        [Required(ErrorMessage = "O nome fantasia é obrigatório.")]
+        [Display(Name = "Nome fantasia")]
         [MaxLength(100)]
-        public string Nome { get; set; } = string.Empty;
+        public string NomeFantasia { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O e-mail é obrigatório.")]
         [Display(Name = "E-mail")]
         [MaxLength(100)]
-        [EmailAddress(ErrorMessage = "E-mail inválido.")]
+        [EmailAddress]
         public string Email { get; set; } = string.Empty;
 
         // Segurança
-        [Required(ErrorMessage = "A senha é obrigatória.")]
+        [Required]
         [Display(Name = "Senha")]
         [DataType(DataType.Password)]
         [MaxLength(512)]
         public string SenhaHash { get; set; } = string.Empty;
 
-        // Documento
-        [Display(Name = "Documento CPF")]
+        // Documento PJ
+        [Required(ErrorMessage = "O CNPJ é obrigatório.")]
+        [Display(Name = "CNPJ")]
         [MaxLength(18)]
-        public string? Documento { get; set; }
+        public string CNPJ { get; set; } = string.Empty;
 
-        // Campos específicos
-        [Display(Name = "Data de nascimento")]
+        // Novo campo → Data de fundação
+        [Required(ErrorMessage = "A data de fundação é obrigatória.")]
+        [Display(Name = "Data de fundação")]
         [Column(TypeName = "date")]
-        public DateTime? DataNascimento { get; set; }
+        public DateTime DataFundacao { get; set; }
 
         // Auditoria
+        [Display(Name = "Ativo?")]
+        public bool Ativo { get; set; } = true;
+
         [Display(Name = "Data de criação")]
         [Column(TypeName = "datetime2")]
         public DateTime DataCriacao { get; set; }
 
-        public bool Ativo { get; set; } = true;
-
-        // Navegações 1:N
+        // Navegações
         public ICollection<Conta> Contas { get; set; } = new List<Conta>();
         public ICollection<Categoria> Categorias { get; set; } = new List<Categoria>();
         public ICollection<Transacao> Transacoes { get; set; } = new List<Transacao>();

@@ -1,4 +1,4 @@
-﻿@model FinnovaWebApplication.Models.TipoUsuario
+﻿@model FinnovaWebApplication.Models.TipoInvestimento
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,17 +6,17 @@
 
 <h1>Edit</h1>
 
-<h4>TipoUsuario</h4>
+<h4>TipoInvestimento</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdTipoUsuario" />
+            <input type="hidden" asp-for="IdTipoInvestimento" />
             <div class="form-group">
-                <label asp-for="DescricaoTipoUsuario" class="control-label"></label>
-                <input asp-for="DescricaoTipoUsuario" class="form-control" />
-                <span asp-validation-for="DescricaoTipoUsuario" class="text-danger"></span>
+                <label asp-for="DescricaoTipoInvestimento" class="control-label"></label>
+                <input asp-for="DescricaoTipoInvestimento" class="form-control" />
+                <span asp-validation-for="DescricaoTipoInvestimento" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

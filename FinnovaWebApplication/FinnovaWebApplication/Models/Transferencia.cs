@@ -4,6 +4,7 @@ using Finnova.Core.Models;
 
 namespace FinnovaWebApplication.Models
 {
+    [Table("Transferencias")]
     public class Transferencia
     {
         [Key]

@@ -24,16 +24,22 @@
             @Html.DisplayFor(model => model.Banco.Codigo)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeConta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomeConta)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TipoConta)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TipoConta.DescricaoTipoConta)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NomeConta)
+            @Html.DisplayNameFor(model => model.TipoInvestimento)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NomeConta)
+            @Html.DisplayFor(model => model.TipoInvestimento.DescricaoTipoInvestimento)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.SaldoInicial)
@@ -52,12 +58,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DataCriacao)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataAtualizacao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataAtualizacao)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Ativo)

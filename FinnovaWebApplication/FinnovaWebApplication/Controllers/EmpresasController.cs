@@ -5,27 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Finnova.Core.Models;
 using FinnovaWebApplication.Data;
-using FinnovaWebApplication.Models;
 
 namespace FinnovaWebApplication.Controllers
 {
-    public class TipoUsuariosController : Controller
+    public class EmpresasController : Controller
     {
         private readonly FinnovaWebApplicationContext _context;
 
-        public TipoUsuariosController(FinnovaWebApplicationContext context)
+        public EmpresasController(FinnovaWebApplicationContext context)
         {
             _context = context;
         }
 
-        // GET: TipoUsuarios
+        // GET: Empresas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TipoUsuario.ToListAsync());
+            return View(await _context.Empresa.ToListAsync());
         }
 
-        // GET: TipoUsuarios/Details/5
+        // GET: Empresas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var tipoUsuario = await _context.TipoUsuario
-                .FirstOrDefaultAsync(m => m.IdTipoUsuario == id);
-            if (tipoUsuario == null)
+            var empresa = await _context.Empresa
+                .FirstOrDefaultAsync(m => m.IdEmpresa == id);
+            if (empresa == null)
             {
                 return NotFound();
             }
 
-            return View(tipoUsuario);
+            return View(empresa);
         }
 
-        // GET: TipoUsuarios/Create
+        // GET: Empresas/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: TipoUsuarios/Create
+        // POST: Empresas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdTipoUsuario,DescricaoTipoUsuario")] TipoUsuario tipoUsuario)
+        public async Task<IActionResult> Create([Bind("IdEmpresa,NomeFantasia,Email,SenhaHash,CNPJ,DataFundacao,Ativo,DataCriacao")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tipoUsuario);
+                _context.Add(empresa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(tipoUsuario);
+            return View(empresa);
         }
 
-        // GET: TipoUsuarios/Edit/5
+        // GET: Empresas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var tipoUsuario = await _context.TipoUsuario.FindAsync(id);
-            if (tipoUsuario == null)
+            var empresa = await _context.Empresa.FindAsync(id);
+            if (empresa == null)
             {
                 return NotFound();
             }
-            return View(tipoUsuario);
+            return View(empresa);
         }
 
-        // POST: TipoUsuarios/Edit/5
+        // POST: Empresas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdTipoUsuario,DescricaoTipoUsuario")] TipoUsuario tipoUsuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEmpresa,NomeFantasia,Email,SenhaHash,CNPJ,DataFundacao,Ativo,DataCriacao")] Empresa empresa)
         {
-            if (id != tipoUsuario.IdTipoUsuario)
+            if (id != empresa.IdEmpresa)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace FinnovaWebApplication.Controllers
             {
                 try
                 {
-                    _context.Update(tipoUsuario);
+                    _context.Update(empresa);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TipoUsuarioExists(tipoUsuario.IdTipoUsuario))
+                    if (!EmpresaExists(empresa.IdEmpresa))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace FinnovaWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(tipoUsuario);
+            return View(empresa);
         }
 
-        // GET: TipoUsuarios/Delete/5
+        // GET: Empresas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +124,34 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var tipoUsuario = await _context.TipoUsuario
-                .FirstOrDefaultAsync(m => m.IdTipoUsuario == id);
-            if (tipoUsuario == null)
+            var empresa = await _context.Empresa
+                .FirstOrDefaultAsync(m => m.IdEmpresa == id);
+            if (empresa == null)
             {
                 return NotFound();
             }
 
-            return View(tipoUsuario);
+            return View(empresa);
         }
 
-        // POST: TipoUsuarios/Delete/5
+        // POST: Empresas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tipoUsuario = await _context.TipoUsuario.FindAsync(id);
-            if (tipoUsuario != null)
+            var empresa = await _context.Empresa.FindAsync(id);
+            if (empresa != null)
             {
-                _context.TipoUsuario.Remove(tipoUsuario);
+                _context.Empresa.Remove(empresa);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TipoUsuarioExists(int id)
+        private bool EmpresaExists(int id)
         {
-            return _context.TipoUsuario.Any(e => e.IdTipoUsuario == id);
+            return _context.Empresa.Any(e => e.IdEmpresa == id);
         }
     }
 }

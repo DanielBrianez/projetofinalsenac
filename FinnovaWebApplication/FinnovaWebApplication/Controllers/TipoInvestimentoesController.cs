@@ -5,28 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Finnova.Core.Models;
 using FinnovaWebApplication.Data;
+using FinnovaWebApplication.Models;
 
 namespace FinnovaWebApplication.Controllers
 {
-    public class CategoriasController : Controller
+    public class TipoInvestimentoesController : Controller
     {
         private readonly FinnovaWebApplicationContext _context;
 
-        public CategoriasController(FinnovaWebApplicationContext context)
+        public TipoInvestimentoesController(FinnovaWebApplicationContext context)
         {
             _context = context;
         }
 
-        // GET: Categorias
+        // GET: TipoInvestimentoes
         public async Task<IActionResult> Index()
         {
-            var finnovaWebApplicationContext = _context.Categoria.Include(c => c.Usuario);
-            return View(await finnovaWebApplicationContext.ToListAsync());
+            return View(await _context.TipoInvestimento.ToListAsync());
         }
 
-        // GET: Categorias/Details/5
+        // GET: TipoInvestimentoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +33,39 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria
-                .Include(c => c.Usuario)
-                .FirstOrDefaultAsync(m => m.IdCategoria == id);
-            if (categoria == null)
+            var tipoInvestimento = await _context.TipoInvestimento
+                .FirstOrDefaultAsync(m => m.IdTipoInvestimento == id);
+            if (tipoInvestimento == null)
             {
                 return NotFound();
             }
 
-            return View(categoria);
+            return View(tipoInvestimento);
         }
 
-        // GET: Categorias/Create
+        // GET: TipoInvestimentoes/Create
         public IActionResult Create()
         {
-            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Nome");
             return View();
         }
 
-        // POST: Categorias/Create
+        // POST: TipoInvestimentoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCategoria,IdUsuario,Nome,Descricao,DataCriacao,Ativo")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("IdTipoInvestimento,DescricaoTipoInvestimento")] TipoInvestimento tipoInvestimento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(categoria);
+                _context.Add(tipoInvestimento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Nome", categoria.IdUsuario);
-            return View(categoria);
+            return View(tipoInvestimento);
         }
 
-        // GET: Categorias/Edit/5
+        // GET: TipoInvestimentoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +73,22 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria.FindAsync(id);
-            if (categoria == null)
+            var tipoInvestimento = await _context.TipoInvestimento.FindAsync(id);
+            if (tipoInvestimento == null)
             {
                 return NotFound();
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Nome", categoria.IdUsuario);
-            return View(categoria);
+            return View(tipoInvestimento);
         }
 
-        // POST: Categorias/Edit/5
+        // POST: TipoInvestimentoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCategoria,IdUsuario,Nome,Descricao,DataCriacao,Ativo")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("IdTipoInvestimento,DescricaoTipoInvestimento")] TipoInvestimento tipoInvestimento)
         {
-            if (id != categoria.IdCategoria)
+            if (id != tipoInvestimento.IdTipoInvestimento)
             {
                 return NotFound();
             }
@@ -102,12 +97,12 @@ namespace FinnovaWebApplication.Controllers
             {
                 try
                 {
-                    _context.Update(categoria);
+                    _context.Update(tipoInvestimento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoriaExists(categoria.IdCategoria))
+                    if (!TipoInvestimentoExists(tipoInvestimento.IdTipoInvestimento))
                     {
                         return NotFound();
                     }
@@ -118,11 +113,10 @@ namespace FinnovaWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdUsuario"] = new SelectList(_context.Usuario, "IdUsuario", "Nome", categoria.IdUsuario);
-            return View(categoria);
+            return View(tipoInvestimento);
         }
 
-        // GET: Categorias/Delete/5
+        // GET: TipoInvestimentoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,35 +124,34 @@ namespace FinnovaWebApplication.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria
-                .Include(c => c.Usuario)
-                .FirstOrDefaultAsync(m => m.IdCategoria == id);
-            if (categoria == null)
+            var tipoInvestimento = await _context.TipoInvestimento
+                .FirstOrDefaultAsync(m => m.IdTipoInvestimento == id);
+            if (tipoInvestimento == null)
             {
                 return NotFound();
             }
 
-            return View(categoria);
+            return View(tipoInvestimento);
         }
 
-        // POST: Categorias/Delete/5
+        // POST: TipoInvestimentoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var categoria = await _context.Categoria.FindAsync(id);
-            if (categoria != null)
+            var tipoInvestimento = await _context.TipoInvestimento.FindAsync(id);
+            if (tipoInvestimento != null)
             {
-                _context.Categoria.Remove(categoria);
+                _context.TipoInvestimento.Remove(tipoInvestimento);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoriaExists(int id)
+        private bool TipoInvestimentoExists(int id)
         {
-            return _context.Categoria.Any(e => e.IdCategoria == id);
+            return _context.TipoInvestimento.Any(e => e.IdTipoInvestimento == id);
         }
     }
 }

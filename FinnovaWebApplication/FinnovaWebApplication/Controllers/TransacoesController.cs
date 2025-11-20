@@ -65,7 +65,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdTransacao,Valor,DataTransacao,IdTipoTransacao,IdUsuario,IdConta,IdCategoria,IdSubcategoria,Descricao,CriadoEm,AtualizadoEm")] Transacao transacao)
+        public async Task<IActionResult> Create([Bind("IdTransacao,Valor,DataTransacao,IdTipoTransacao,IdUsuario,IdConta,IdCategoria,IdSubcategoria,Descricao")] Transacao transacao)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdTransacao,Valor,DataTransacao,IdTipoTransacao,IdUsuario,IdConta,IdCategoria,IdSubcategoria,Descricao,CriadoEm,AtualizadoEm")] Transacao transacao)
+        public async Task<IActionResult> Edit(int id, [Bind("IdTransacao,Valor,DataTransacao,IdTipoTransacao,IdUsuario,IdConta,IdCategoria,IdSubcategoria,Descricao")] Transacao transacao)
         {
             if (id != transacao.IdTransacao)
             {

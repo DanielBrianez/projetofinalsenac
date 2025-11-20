@@ -4,6 +4,7 @@ using Finnova.Core.Models;
 
 namespace FinnovaWebApplication.Models
 {
+    [Table("Subcategoria")]
     public class Subcategoria
     {
         [Key]

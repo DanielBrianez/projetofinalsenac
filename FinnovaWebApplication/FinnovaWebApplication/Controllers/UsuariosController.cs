@@ -22,8 +22,7 @@ namespace FinnovaWebApplication.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-            var finnovaWebApplicationContext = _context.Usuario.Include(u => u.TipoUsuario);
-            return View(await finnovaWebApplicationContext.ToListAsync());
+            return View(await _context.Usuario.ToListAsync());
         }
 
         // GET: Usuarios/Details/5
@@ -35,7 +34,6 @@ namespace FinnovaWebApplication.Controllers
             }
 
             var usuario = await _context.Usuario
-                .Include(u => u.TipoUsuario)
                 .FirstOrDefaultAsync(m => m.IdUsuario == id);
             if (usuario == null)
             {
@@ -48,7 +46,6 @@ namespace FinnovaWebApplication.Controllers
         // GET: Usuarios/Create
         public IActionResult Create()
         {
-            ViewData["IdTipoUsuario"] = new SelectList(_context.TipoUsuario, "IdTipoUsuario", "DescricaoTipoUsuario");
             return View();
         }
 
@@ -57,7 +54,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,Nome,Email,SenhaHash,SenhaSalt,IdTipoUsuario,Documento,NomeEmpresa,DataCriacao,DataAtualizacao,Ativo")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("IdUsuario,Nome,Email,SenhaHash,Documento,DataNascimento,DataCriacao,Ativo")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +62,6 @@ namespace FinnovaWebApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdTipoUsuario"] = new SelectList(_context.TipoUsuario, "IdTipoUsuario", "DescricaoTipoUsuario", usuario.IdTipoUsuario);
             return View(usuario);
         }
 
@@ -82,7 +78,6 @@ namespace FinnovaWebApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdTipoUsuario"] = new SelectList(_context.TipoUsuario, "IdTipoUsuario", "DescricaoTipoUsuario", usuario.IdTipoUsuario);
             return View(usuario);
         }
 
@@ -91,7 +86,7 @@ namespace FinnovaWebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nome,Email,SenhaHash,SenhaSalt,IdTipoUsuario,Documento,NomeEmpresa,DataCriacao,DataAtualizacao,Ativo")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nome,Email,SenhaHash,Documento,DataNascimento,DataCriacao,Ativo")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {
@@ -118,7 +113,6 @@ namespace FinnovaWebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdTipoUsuario"] = new SelectList(_context.TipoUsuario, "IdTipoUsuario", "DescricaoTipoUsuario", usuario.IdTipoUsuario);
             return View(usuario);
         }
 
@@ -131,7 +125,6 @@ namespace FinnovaWebApplication.Controllers
             }
 
             var usuario = await _context.Usuario
-                .Include(u => u.TipoUsuario)
                 .FirstOrDefaultAsync(m => m.IdUsuario == id);
             if (usuario == null)
             {
